@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="index.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.min.js"
+    integrity="sha512-zKeerWHHuP3ar7kX2WKBSENzb+GJytFSBL6HrR2nPSR1kOX1qjm+oHooQtbDpDBSITgyl7QXZApvDfDWvKjkUw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="currency-box">
+      <h2 id="Calculation-header">Currency Converter</h2>
+      <div class="option-box">
+        <div class="from-option">
+          <select id="currency-option1" class="selection">
+            <option value="NoSelection">From :</option>
+            <option value="Dollar">USD</option>
+            <option value="Manat">Manat</option>
+          </select>
+        </div>
+        <div class="to-option">
+          <select id="currency-option2" class="selection">
+            <option value="NoSelection">To:</option>
+            <option value="Dollar">USD</option>
+            <option value="Manat">Manat</option>
+          </select>
+        </div>
+      </div>
+      <div class="input-box">
+      <input type="number" id="currency-input" name="currency-input" class="class-currency-input ">
+      </div>
+      <button id="calculatebtn">Calculate</button>
+      <p id="result"></p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
