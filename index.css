@@ -89,3 +89,29 @@ input:focus {
 #currency-option1,#currency-option2{
   width: 200px;
 }
+
+#result{
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+}
+@media (max-width: 450px) {
+  .currency-box {
+    padding: 20px;
+  }
+  .currency-box h2 {
+    font-size: 24px;
+  }
+  .currency-box{
+    width: 70%;
+  }
+ .option-box{
+  display: flex;
+  flex-direction: column;
+ }
+ 
+#currency-option1,#currency-option2{
+  width: 270px;
+}
+
+}
