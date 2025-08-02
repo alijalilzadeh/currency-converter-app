@@ -95,7 +95,7 @@ input:focus {
   font-size: 15px;
   font-weight: 500;
 }
-@media (max-width: 450px) {
+@media (max-width: 390px) {
   .currency-box {
     padding: 20px;
   }
@@ -111,7 +111,6 @@ input:focus {
  }
  
 #currency-option1,#currency-option2{
-  width: 270px;
+  width: 230px;
 }
-
 }
