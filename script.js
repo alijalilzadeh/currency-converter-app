@@ -9,6 +9,17 @@ const fromText = document.querySelector("#FromText");
 const toText = document.querySelector("#ToText");
 const flag = document.querySelector(".flag");
 
+input.addEventListener("keydown",pressEnter);
+function pressEnter(e){
+  
+  if(e.key === "Enter"){
+    calculateCurrency();
+  }
+
+}
+
+
+
 multiLang.addEventListener("change", function () {
   if (multiLang.value === "Azerbaijan") {
     titleCurrency.innerText = "Valyuta Çevirici";
@@ -45,41 +56,45 @@ multiLang.addEventListener("change", function () {
 });
 
 
-calculateButton.addEventListener("click", function () {
+calculateButton.addEventListener("click",calculateCurrency);
+
+function calculateCurrency(){
   // console.log("Calculate button clicked");
   const value1 = parseFloat(input.value);
   let convertedCurrency;
 
+    if (selection1.value === selection2.value) {
+    result.innerText = `${value1} ${selection1.value} = ${value1} ${selection2.value}`;
+    return;
+  };
+ 
+
   if (selection1.value === "USD" && selection2.value === "AZN") {
-    convertedCurrency = value1 * 1.7;
-    result.innerText = `${value1} ${selection1.value} = ${convertedCurrency} ${selection2.value}`;
+    convertedCurrency = (value1 * 1.7).toFixed(2);
+   
   }
   if (selection1.value === "AZN" && selection2.value === "USD") {
-    convertedCurrency = value1 / 1.7;
-    result.innerText = `${value1} ${selection1.value} = ${convertedCurrency.toFixed(2)} ${selection2.value}`;
+    convertedCurrency = (value1 / 1.7).toFixed(2);
   }
   if (selection1.value === "AZN" && selection2.value === "TRY") {
-    convertedCurrency = value1 * 23.92;
-    result.innerText = `${value1} ${selection1.value} = ${convertedCurrency.toFixed(2)} ${selection2.value} `;
+    convertedCurrency = (value1 * 23.92).toFixed(2);
   }
   if (selection1.value === "TRY" && selection2.value === "AZN") {
-    convertedCurrency = value1 / 23.92;
-    result.innerText = `${value1} ${selection1.value} = ${convertedCurrency.toFixed(2)} ${selection2.value} `;
+    convertedCurrency = (value1 / 23.92).toFixed(2);
   }
 
   if (selection1.value === "USD" && selection2.value === "TRY") {
-    convertedCurrency = value1 * 40.65;
-    result.innerText = `${value1} ${selection1.value} = ${convertedCurrency.toFixed(2)} ${selection2.value} `;
+    convertedCurrency = (value1 * 40.65).toFixed(2);
   }
   if (selection1.value === "TRY" && selection2.value === "USD") {
-    convertedCurrency = value1 / 40.65;
-    result.innerText = `${value1} ${selection1.value} = ${convertedCurrency.toFixed(2)} ${selection2.value} `;
+    convertedCurrency = (value1 / 40.65).toFixed(2);
   }
 
-  if (selection1.value === selection2.value) {
-    result.innerText = `${value1} ${selection1.value} = ${value1} ${selection2.value}`;
-  }
-});
+
+  result.innerText = `${value1} ${selection1.value} = ${convertedCurrency} ${selection2.value} `;
+
+}
 
 
 
+// Another properties will be when you enter the click button it will calculate you don't need to press calculate button
