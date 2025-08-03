@@ -93,7 +93,15 @@ function calculateCurrency(){
   result.innerText = `${value1} ${selection1.value} = ${convertedCurrency} ${selection2.value} `;
   }
   else{
+    
     result.innerText = "Please enter a valid number";
+    result.style.color = "red";
+    input.style.border = "2px solid red";
+    setTimeout(() => {
+      result.innerText = "";
+      result.style.color = "black";
+      input.style.border = "2px solid black";
+    }, 2000);
   }
 }
 
