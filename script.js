@@ -49,6 +49,7 @@ calculateButton.addEventListener("click", function(){
   // console.log("Calculate button clicked");
   const value1 = parseFloat(input.value);
   let convertedCurrency;
+ 
   if(selection1.value === "USD" && selection2.value === "AZN"){
       convertedCurrency = value1*1.7;
       result.innerText = `${value1} ${selection1.value} = ${convertedCurrency} ${selection2.value}`;
@@ -75,7 +76,9 @@ calculateButton.addEventListener("click", function(){
     result.innerText = `${value1} ${selection1.value} = ${convertedCurrency.toFixed(2)} ${selection2.value} `;
   }
   
-  
+   if(selection1.value === selection2.value){
+    result.innerText = `${value1} ${selection1.value} = ${value1} ${selection2.value}`;
+  }
 });
 
 
