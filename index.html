@@ -17,10 +17,14 @@
 <body>
   <div class="container">
     <div class="multilanguage-selection">
+      <!-- <span class="fi fi-az"></span> -->
+      <span class="fi fi-us flag"></span>
+      <!-- <span class="fi fi-ru"></span> -->
+      <!-- <span class="fi fi-tr"></span> -->
       <select  id="languages" class="multi-language">
         <option lang="en" value="English">English</option>
         <option lang="az" value="Azerbaijan">Azerbaijan</option>
-        <option lang="tr" value="Tr">Turkey</option>
+        <option lang="tr" value="Turkey">Turkey</option>
         <option lang="ru" value="Russian">Russian</option>
       </select>
     </div>
@@ -29,7 +33,7 @@
       <div class="option-box">
         <div class="from-option">
           <select id="currency-option1" class="selection">
-            <option value="NoSelection">From :</option>
+            <option id="FromText" disabled selected> From :</option>
             <option value="USD">USD</option>
             <option value="AZN">AZN</option>
             <option value="TRY">TRY</option>
@@ -37,7 +41,7 @@
         </div>
         <div class="to-option">
           <select id="currency-option2" class="selection">
-            <option value="NoSelection">To:</option>
+            <option id="ToText" disabled selected>To:</option>
             <option value="USD">USD</option>
             <option value="AZN">AZN</option>
             <option value="TRY">TRY</option>

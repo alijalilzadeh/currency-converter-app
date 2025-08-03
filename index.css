@@ -28,7 +28,7 @@ body {
 
 .multilanguage-selection .multi-language {
   border: none;
-  padding: 7px 6px;
+  padding: 7px 4px;
   font-size: 15px;
   font-weight: 500;
   border-radius: 4px;
@@ -39,8 +39,11 @@ body {
   outline: none;
 }
 
-#languages::before {
-  background-image: url(azerbaijan.png);
+.flag{
+  position: absolute;
+  z-index: 10;
+  cursor: pointer;
+  font-size: 15px;
 }
 
 .currency-box {

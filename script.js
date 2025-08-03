@@ -2,10 +2,48 @@ const input = document.getElementById("currency-input");
 const selection1 = document.querySelector("#currency-option1");
 const selection2 = document.querySelector("#currency-option2");
 const result = document.querySelector("#result");
+const multiLang = document.querySelector(".multi-language");
+const titleCurrency = document.querySelector(".currency-box h2");
+const calculateButton = document.querySelector("#calculatebtn");
+const fromText = document.querySelector("#FromText");
+const toText = document.querySelector("#ToText");
+const flag = document.querySelector(".flag");
+
+multiLang.addEventListener("click",function(){
+    if(multiLang.value === "Azerbaijan"){ 
+        titleCurrency.innerText = "Valyuta Çevirici";
+        calculateButton.innerText = "Hesabla";
+        fromText.innerText = "Valyutanın tipi:";
+        toText.innerText = "Çevrilən valyuta:";
+        flag.className = "fi fi-az flag";
+    }
+     if(multiLang.value === "Turkey"){ 
+        titleCurrency.innerText = "Döviz Çevirici";
+        calculateButton.innerText = "Hesapla";
+        fromText.innerText = " Başlangıç Birimi:";
+        toText.innerText = "Hedef Birimi:";
+        flag.className = "fi fi-tr flag";
+
+    }
+     if(multiLang.value === "Russian"){ 
+        titleCurrency.innerText = "Конвертер валют";
+        calculateButton.innerText = "Рассчитать";
+        fromText.innerText = "Откуда:";
+        toText.innerText = "Куда:";
+        flag.className = "fi fi-ru flag";
+
+    }
+     if(multiLang.value === "English"){ 
+        titleCurrency.innerText = "Currency Converter";
+        calculateButton.innerText = "Calculate";
+        fromText.innerText = "From";
+        toText.innerText = "To:";
+    }
+
+});
 
 
-
-const calculateButton = document.querySelector("#calculatebtn").addEventListener("click", function(){
+calculateButton.addEventListener("click", function(){
   // console.log("Calculate button clicked");
   const value1 = parseFloat(input.value);
   let convertedCurrency;
