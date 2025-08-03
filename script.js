@@ -62,13 +62,13 @@ function calculateCurrency(){
   // console.log("Calculate button clicked");
   const value1 = parseFloat(input.value);
   let convertedCurrency;
+  if(value1 >= 0){
 
     if (selection1.value === selection2.value) {
     result.innerText = `${value1} ${selection1.value} = ${value1} ${selection2.value}`;
     return;
   };
  
-
   if (selection1.value === "USD" && selection2.value === "AZN") {
     convertedCurrency = (value1 * 1.7).toFixed(2);
    
@@ -90,9 +90,11 @@ function calculateCurrency(){
     convertedCurrency = (value1 / 40.65).toFixed(2);
   }
 
-
   result.innerText = `${value1} ${selection1.value} = ${convertedCurrency} ${selection2.value} `;
-
+  }
+  else{
+    result.innerText = "Please enter a valid number";
+  }
 }
 
 
