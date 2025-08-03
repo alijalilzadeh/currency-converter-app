@@ -16,9 +16,30 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  position: relative;
 
 }
+.multilanguage-selection{
+  position: absolute;
+  top: 15px;
+  right: 25px;
+}
 
+.multilanguage-selection .multi-language{
+  border: none;
+  padding: 7px 6px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 4px;
+  text-align: center;
+}
+.multilanguage-selection .multi-language:focus{
+  outline:none;
+}
+
+#languages::before{
+  background-image: url(azerbaijan.png);
+}
 .currency-box {
   padding: 30px 40px;
   box-shadow: 0 9px 20px rgba(0, 0, 0, 0.08);
