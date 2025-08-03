@@ -38,6 +38,8 @@ multiLang.addEventListener("click",function(){
         calculateButton.innerText = "Calculate";
         fromText.innerText = "From";
         toText.innerText = "To:";
+        flag.className = "fi fi-us flag";
+
     }
 
 });
