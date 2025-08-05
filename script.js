@@ -11,11 +11,11 @@ const flag = document.querySelector(".flag");
 
 input.addEventListener("keydown", pressEnter);
 function pressEnter(e) {
-
   if (e.key === "Enter") {
     calculateCurrency();
+    ShowErrorMessage();
+    multiErrorMessage();
   }
-
 }
 
 function ShowErrorMessage() {
@@ -33,12 +33,15 @@ function ShowErrorMessage() {
   if (multiLang.value === "English") {
     result.innerText = "	Please enter a valid number";
   }
-
+  result.style.color = "red";
 }
 
 multiLang.addEventListener("change", changeLanguage);
 
 function changeLanguage() {
+  result.innerText = "";
+  input.style.border = "2px solid rgb(173, 165, 165)";
+  input.value = "";
   if (multiLang.value === "Azerbaijan") {
     titleCurrency.innerText = "Valyuta Çevirici";
     calculateButton.innerText = "Hesabla";
@@ -52,8 +55,6 @@ function changeLanguage() {
     fromText.innerText = " Başlangıç Birimi:";
     toText.innerText = "Hedef Birimi:";
     flag.className = "fi fi-tr flag";
-
-
   }
   if (multiLang.value === "Russian") {
     titleCurrency.innerText = "Конвертер валют";
@@ -69,27 +70,63 @@ function changeLanguage() {
     fromText.innerText = "From";
     toText.innerText = "To:";
     flag.className = "fi fi-us flag";
-
   }
+}
 
-  setTimeout(() => {
-    result.innerText = "";
-    result.style.color = "black";
-    input.value = "";
-    input.style.border = "2px solid rgb(173, 165, 165)";
-  }, 3000);
+function showInputError() {
+  const inputErrorMessage = {
+    Azerbaijan: "Zəhmət olmasa bir dəyər daxil edin",
+    Turkey: "Lütfen bir miktar girin",
+    Russian: "Пожалуйста, введите сумму",
+    English: "Please enter an amount"
+  };
+  if (selection1.selectedIndex != 0 && selection2.selectedIndex != 0) {
+    result.innerText = inputErrorMessage[multiLang.value];
+    result.style.color = "red";
+  }
+}
 
+    
+function showBothError(){
+  const bothErrorMessage = {
+    Azerbaijan: "Zəhmət olmasa valyutanı seçin və məbləği daxil edin",
+    Turkey: "Lütfen para birimlerini seçin ve bir miktar girin",
+    Russian: "Пожалуйста, выберите валюты и введите сумму",
+    English: "Please select currencies and enter an amount"
+  };
+    if ((selection1.selectedIndex === 0 || selection2.selectedIndex === 0) && value1 === "") {
+    result.innerText = bothErrorMessage[multiLang.value];
+    result.style.color = "red";
+  }
+  
+}
+
+function multiErrorMessage() {
+  const Message = {
+    Azerbaijan: "Zəhmət olmasa valyutanı seçi",
+    Turkey: "Lütfen bir para birimi seçin",
+    Russian: "Пожалуйста, выберите валюту",
+    English: "Please select a currency"
+  };
+
+  if (selection1.selectedIndex === 0 || selection2.selectedIndex === 0) {
+    result.innerText = Message[multiLang.value];
+    result.style.color = "red";
+  }
 }
 
 calculateButton.addEventListener("click", calculateCurrency);
-
 function calculateCurrency() {
-  // console.log("Calculate button clicked");
   const value1 = parseFloat(input.value);
   let convertedCurrency;
-  if (value1 >= 0) {
+  result.style.color = "black";
 
-    if (selection1.value === selection2.value) {
+
+  if ((selection1.value === "Nan" || selection2.value === "Nan")  ) {
+    multiErrorMessage();
+  }
+  if ((value1 >= 0) && (selection1.value != "Nan" && selection2.value != "Nan")) {
+    if ((selection1.value === selection2.value)) {
       result.innerText = `${value1} ${selection1.value} = ${value1} ${selection2.value}`;
       return;
     };
@@ -119,14 +156,16 @@ function calculateCurrency() {
   }
   else if (value1 < 0) {
 
-    result.innerText = "Please enter a valid number";
     ShowErrorMessage();
-    result.style.color = "red";
-    input.style.border = "2px solid red";
 
   }
+  else if ((selection1.value != "Nan" || selection1.value != "Nan") && value1 != "") {
+    console.log("Hello");
+    showInputError();
+  }
+  else if ((selection1.value === "Nan" || selection1.value === "Nan") && value1 === "") {
+    console.log("Hello");
+    showBothError();
+  }
 }
-
-
-
 // Another properties will be when you enter the click button it will calculate you don't need to press calculate button
