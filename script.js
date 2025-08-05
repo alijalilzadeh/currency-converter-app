@@ -18,6 +18,7 @@ function pressEnter(e) {
   }
 }
 
+
 function ShowErrorMessage() {
   if (multiLang.value === "Azerbaijan") {
     result.innerText = "	Zəhmət olmasa düzgün ədəd daxil edin";

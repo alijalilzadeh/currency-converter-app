@@ -20,7 +20,6 @@ body {
 
 }
 
-
 .multilanguage-selection {
   position: absolute;
   top: 15px;
@@ -40,7 +39,7 @@ body {
   outline: none;
 }
 
-.flag{
+.flag {
   position: absolute;
   z-index: 10;
   cursor: pointer;
@@ -90,7 +89,6 @@ input:focus {
   outline: none;
 }
 
-
 #calculatebtn {
   cursor: pointer;
   border: none;
@@ -126,6 +124,16 @@ input:focus {
   text-align: center;
   font-size: 15px;
   font-weight: 500;
+}
+
+.reverse-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.reverse-box span i{
+  cursor: pointer;
+  font-weight: 600;
 }
 
 @media (max-width: 390px) {
