@@ -136,6 +136,19 @@ input:focus {
   font-weight: 600;
 }
 
+.revert-i{
+  animation: Reverting 0.4s forwards ;
+}
+
+@keyframes Reverting{
+  0%{
+    transform: rotateX(0);
+  }
+  100%{
+    transform: rotateZ(180deg);
+  }
+}
+
 @media (max-width: 390px) {
   .currency-box {
     padding: 20px;

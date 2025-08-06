@@ -8,6 +8,21 @@ const calculateButton = document.querySelector("#calculatebtn");
 const fromText = document.querySelector("#FromText");
 const toText = document.querySelector("#ToText");
 const flag = document.querySelector(".flag");
+const revertBtn = document.querySelector(".fa-repeat");
+
+revertBtn.addEventListener("click",revertingCurrencies);
+
+function revertingCurrencies(){
+  revertBtn.classList.add("revert-i");
+  setTimeout(() => {
+    revertBtn.classList.remove("revert-i");
+  },700);
+  const temp = selection1.value;
+  selection1.value = selection2.value;
+  selection2.value = temp;
+  result.innerText = "";
+}
+
 
 input.addEventListener("keydown", pressEnter);
 function pressEnter(e) {
@@ -17,7 +32,6 @@ function pressEnter(e) {
     multiErrorMessage();
   }
 }
-
 
 function ShowErrorMessage() {
   if (multiLang.value === "Azerbaijan") {
