@@ -17,10 +17,15 @@ function revertingCurrencies(){
   setTimeout(() => {
     revertBtn.classList.remove("revert-i");
   },700);
+  changingCurrencies();
+}
+
+function changingCurrencies() {
   const temp = selection1.value;
   selection1.value = selection2.value;
   selection2.value = temp;
-  result.innerText = "";
+
+  calculateCurrency(); 
 }
 
 
@@ -170,7 +175,6 @@ function calculateCurrency() {
     result.innerText = `${value1} ${selection1.value} = ${convertedCurrency} ${selection2.value} `;
   }
   else if (value1 < 0) {
-
     ShowErrorMessage();
 
   }
