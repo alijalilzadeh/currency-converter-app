@@ -162,7 +162,6 @@ input:focus {
   .container {
     flex-direction: column;
     padding: 20px;
-    height: auto;
   }
 
   .currency-box {
@@ -195,7 +194,6 @@ input:focus {
   }
 
   .multilanguage-selection {
-    position: static;
     display: flex;
     justify-content: flex-end;
     width: 100%;
