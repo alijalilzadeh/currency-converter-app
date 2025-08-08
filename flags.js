@@ -87,6 +87,3 @@
   ZMW: "zm"  // Zambian Kwacha
 };
 
-for(countries in flagCodes) {
-  console.log(`${countries}: ${flagCodes[countries]}`);
-}

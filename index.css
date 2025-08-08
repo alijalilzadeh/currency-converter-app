@@ -146,7 +146,18 @@ input:focus {
   justify-content: center;
 }
 
-
+.from-option, .to-option{
+  display: flex;
+  position: relative;
+}
+.from-option img,.to-option img{
+  position: absolute;
+  justify-content: flex-end;
+  right: 3px;
+  top: 50%;
+  width: 24px;
+  transform: translateY(-50%);  
+}
 
 @keyframes Reverting {
   0% {

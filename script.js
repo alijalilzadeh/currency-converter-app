@@ -9,9 +9,11 @@ const fromText = document.querySelector("#FromText");
 const toText = document.querySelector("#ToText");
 const flag = document.querySelector(".flag");
 const revertBtn = document.querySelector(".fa-repeat");
+const currencyFlags1= document.querySelector(".image-1");
+const currencyFlags2 = document.querySelector(".image-2");
+
 
 revertBtn.addEventListener("click",revertingCurrencies);
-
 function revertingCurrencies(){
   revertBtn.classList.add("revert-i");
   setTimeout(() => {
@@ -28,6 +30,44 @@ function changingCurrencies() {
   calculateCurrency(); 
 }
 
+// <img src="https://hatscripts.github.io/circle-flags/flags/az.svg" width="20" class="image-2"/>
+// <img src="https://hatscripts.github.io/circle-flags/flags/az.svg" width="20" class="image-1"/>
+
+
+
+function changingCurrenciesFlags1(){
+
+  const selectionContainer1 = document.getElementById("currency-option1");
+
+  const currencyFlags1 = document.createElement("img");
+
+  currencyFlags1.className = "image-1";
+
+  currencyFlags1.src = `https://hatscripts.github.io/circle-flags/flags/${flagCodes[selection1.value]}.svg`;
+
+  const fromOptionDiv = selectionContainer1.parentElement;
+
+  fromOptionDiv.insertBefore(currencyFlags1, selectionContainer1.nextSibling);
+}
+
+function changingCurrenciesFlags2(){
+
+  const selectionContainer2 = document.getElementById("currency-option2"); 
+
+  const currencyFlags2 = document.createElement("img");
+
+  currencyFlags2.className = "image-2";
+
+  currencyFlags2.src = `https://hatscripts.github.io/circle-flags/flags/${flagCodes[selection2.value]}.svg`;
+
+  const toOptionDiv = selectionContainer2.parentElement; 
+
+  fromOptionDiv.insertBefore(currencyFlags1, selectionContainer1.nextSibling);
+  toOptionDiv.insertBefore(currencyFlags2, selectionContainer2.nextSibling);
+}
+
+selection1.addEventListener("change", changingCurrenciesFlags1);
+selection2.addEventListener("change", changingCurrenciesFlags2);
 
 input.addEventListener("keydown", pressEnter);
 function pressEnter(e) {
@@ -140,6 +180,7 @@ function calculateCurrency() {
   const value1 = parseFloat(input.value);
   let convertedCurrency;
   result.style.color = "black";
+  
 
 
   if ((selection1.value === "Nan" || selection2.value === "Nan")  ) {
