@@ -42,7 +42,6 @@ body {
 .flag {
   position: absolute;
   z-index: 10;
-  cursor: pointer;
   font-size: 15px;
 }
 
@@ -74,10 +73,12 @@ body {
 input,
 .selection {
   border: none;
-  padding: 5px 4px;
+  padding: 10px 6px;
   border: 2px solid rgb(173, 165, 165);
-  border-radius: 5px;
+  border-radius: 6px;
   font-weight: 500;
+  background-color: #EFEFEF;
+  border: none;
 
 }
 
@@ -131,54 +132,106 @@ input:focus {
   align-items: center;
   justify-content: center;
 }
-.reverse-box span i{
+
+.reverse-box span i {
   cursor: pointer;
   font-weight: 600;
-}
-
-.flag-select{
-  position: absolute;
+  background-color: #26278D;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 20%;
-  font-size: 15px;
-  transform: translateX(-48px);
 }
 
-.revert-i{
-  animation: Reverting 0.4s forwards ;
-}
 
-@keyframes Reverting{
-  0%{
+
+@keyframes Reverting {
+  0% {
     transform: rotateX(0);
   }
-  100%{
+
+  100% {
     transform: rotateZ(180deg);
   }
 }
 
-@media (max-width: 390px) {
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 20px;
+    height: auto;
+  }
+
   .currency-box {
     padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    gap: 2.4rem;
+    flex-direction: column;
   }
 
   .currency-box h2 {
-    font-size: 24px;
-  }
-
-  .currency-box {
-    width: 70%;
+    font-size: 22px;
   }
 
   .option-box {
     display: flex;
-    flex-direction: column;
+    flex-direction: flex;
+    gap: 1rem;
   }
 
   #currency-option1,
   #currency-option2 {
-    width: 230px;
+    width: 100%;
+  }
+
+  #calculatebtn {
+    padding: 10px 0;
+    font-size: 14px;
+  }
+
+  .multilanguage-selection {
+    position: static;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .reverse-box span i {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .currency-box {
+    padding: 15px;
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+  }
+
+  .currency-box h2 {
+    font-size: 20px;
+  }
+
+  .multilanguage-selection .multi-language {
+    font-size: 14px;
+    padding: 5px 3px;
+  }
+
+  input{
+    padding: 8px 6px;
+    font-size: 14px;
+  }
+
+  #result {
+    font-size: 14px;
   }
 }
