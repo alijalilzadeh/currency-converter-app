@@ -136,6 +136,16 @@ input:focus {
   font-weight: 600;
 }
 
+.flag-select{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20%;
+  font-size: 15px;
+  transform: translateX(-48px);
+}
+
 .revert-i{
   animation: Reverting 0.4s forwards ;
 }

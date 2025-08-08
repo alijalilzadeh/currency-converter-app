@@ -153,7 +153,6 @@ function calculateCurrency() {
 
     if (selection1.value === "USD" && selection2.value === "AZN") {
       convertedCurrency = (value1 * 1.7).toFixed(2);
-
     }
     if (selection1.value === "AZN" && selection2.value === "USD") {
       convertedCurrency = (value1 / 1.7).toFixed(2);
@@ -174,6 +173,9 @@ function calculateCurrency() {
 
     result.innerText = `${value1} ${selection1.value} = ${convertedCurrency} ${selection2.value} `;
   }
+  else if ((selection1.value === "Nan" || selection2.value === "Nan")  ) {
+    multiErrorMessage();
+  }
   else if (value1 < 0) {
     ShowErrorMessage();
 
@@ -185,6 +187,7 @@ function calculateCurrency() {
   else if ((selection1.value === "Nan" || selection1.value === "Nan") && value1 === "") {
     console.log("Hello");
     showBothError();
+
   }
 }
 // Another properties will be when you enter the click button it will calculate you don't need to press calculate button
