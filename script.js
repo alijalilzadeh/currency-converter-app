@@ -22,8 +22,13 @@ function changingCurrencies() {
   selection1.value = selection2.value;
   selection2.value = temp;
 
+  updateCurrencyFlag(selection1, "image-1");
+
+  updateCurrencyFlag(selection2, "image-2");
+
   calculateCurrency(); 
 }
+
 
 
 const selection1 = document.getElementById("currency-option1");
@@ -215,4 +220,3 @@ function calculateCurrency() {
 
   }
 }
-// Another properties will be when you enter the click button it will calculate you don't need to press calculate button
