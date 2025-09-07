@@ -8,12 +8,21 @@ const toText = document.querySelector("#ToText");
 const flag = document.querySelector(".flag");
 const revertBtn = document.querySelector(".fa-repeat");
 
-revertBtn.addEventListener("click",revertingCurrencies);
-function revertingCurrencies(){
+// let apiKey = "d4df8f0cb97d6501ff5a3d15";
+// fetch(`https://v6.exchangerate-api.com/${apiKey}/latest/USD`)
+// .then(response => response.json())
+// .then(data => {
+//   console.log(data);
+// })
+
+
+
+revertBtn.addEventListener("click", revertingCurrencies);
+function revertingCurrencies() {
   revertBtn.classList.add("revert-i");
   setTimeout(() => {
     revertBtn.classList.remove("revert-i");
-  },700);
+  }, 700);
   changingCurrencies();
 }
 
@@ -26,7 +35,7 @@ function changingCurrencies() {
 
   updateCurrencyFlag(selection2, "image-2");
 
-  calculateCurrency(); 
+  calculateCurrency();
 }
 
 
@@ -40,7 +49,7 @@ function updateCurrencyFlag(selectionElement, flagClassName) {
   if (oldFlag && oldFlag.classList.contains(flagClassName)) {
     oldFlag.remove();
   }
-  
+
   if (selectionElement.value !== "Nan" && flagCodes[selectionElement.value]) {
     const newFlag = document.createElement("img");
     newFlag.className = flagClassName;
@@ -86,7 +95,6 @@ function ShowErrorMessage() {
 }
 
 multiLang.addEventListener("change", changeLanguage);
-
 function changeLanguage() {
   result.innerText = "";
   input.style.border = "2px solid rgb(173, 165, 165)";
@@ -135,19 +143,17 @@ function showInputError() {
   }
 }
 
-    
-function showBothError(){
+function showBothError() {
   const bothErrorMessage = {
     Azerbaijan: "Zəhmət olmasa valyutanı seçin və məbləği daxil edin",
     Turkey: "Lütfen para birimlerini seçin ve bir miktar girin",
     Russian: "Пожалуйста, выберите валюты и введите сумму",
     English: "Please select currencies and enter an amount"
   };
-    if ((selection1.selectedIndex === 0 || selection2.selectedIndex === 0) && value1 === "") {
+  if ((selection1.selectedIndex === 0 || selection2.selectedIndex === 0) && value1 === "") {
     result.innerText = bothErrorMessage[multiLang.value];
     result.style.color = "red";
   }
-  
 }
 
 function multiErrorMessage() {
@@ -166,44 +172,28 @@ function multiErrorMessage() {
 
 calculateButton.addEventListener("click", calculateCurrency);
 function calculateCurrency() {
+
   const value1 = parseFloat(input.value);
   let convertedCurrency;
   result.style.color = "black";
-  
 
-
-  if ((selection1.value === "Nan" || selection2.value === "Nan")  ) {
+  if ((selection1.value === "Nan" || selection2.value === "Nan")) {
     multiErrorMessage();
   }
   if ((value1 >= 0) && (selection1.value != "Nan" && selection2.value != "Nan")) {
-    if ((selection1.value === selection2.value)) {
-      result.innerText = `${value1} ${selection1.value} = ${value1} ${selection2.value}`;
-      return;
-    };
-
-    if (selection1.value === "USD" && selection2.value === "AZN") {
-      convertedCurrency = (value1 * 1.7).toFixed(2);
-    }
-    if (selection1.value === "AZN" && selection2.value === "USD") {
-      convertedCurrency = (value1 / 1.7).toFixed(2);
-    }
-    if (selection1.value === "AZN" && selection2.value === "TRY") {
-      convertedCurrency = (value1 * 23.92).toFixed(2);
-    }
-    if (selection1.value === "TRY" && selection2.value === "AZN") {
-      convertedCurrency = (value1 / 23.92).toFixed(2);
-    }
-
-    if (selection1.value === "USD" && selection2.value === "TRY") {
-      convertedCurrency = (value1 * 40.65).toFixed(2);
-    }
-    if (selection1.value === "TRY" && selection2.value === "USD") {
-      convertedCurrency = (value1 / 40.65).toFixed(2);
-    }
-
-    result.innerText = `${value1} ${selection1.value} = ${convertedCurrency} ${selection2.value} `;
+    let apiKey = "d4df8f0cb97d6501ff5a3d15";
+    fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/latest/${selection1.value}`)
+      .then(response => response.json())
+      .then(data => {
+        convertedCurrency = value1 * (data.conversion_rates[selection2.value]);
+        console.log(convertedCurrency)
+        result.innerText = `${value1} ${selection1.value} = ${convertedCurrency.toFixed(2)} ${selection2.value} `;
+      })
+      .catch(error => {
+        console.error("Xəta baş verdi:", error);
+      });
   }
-  else if ((selection1.value === "Nan" || selection2.value === "Nan")  ) {
+  else if ((selection1.value === "Nan" || selection2.value === "Nan")) {
     multiErrorMessage();
   }
   else if (value1 < 0) {
@@ -217,6 +207,5 @@ function calculateCurrency() {
   else if ((selection1.value === "Nan" || selection1.value === "Nan") && value1 === "") {
     console.log("Hello");
     showBothError();
-
   }
 }
